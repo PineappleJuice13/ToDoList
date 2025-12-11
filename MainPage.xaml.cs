@@ -4,13 +4,15 @@ namespace ToDoList
 {
     public partial class MainPage : ContentPage
     {
-        private ObservableCollection<string> task = new ObservableCollection<string>();
+        // Creating Global variables
+        private ObservableCollection<string> listOfTask = new ObservableCollection<string>();
+        int selectedTaskIndex = 0;
 
         public MainPage()
         {
             InitializeComponent();
             DateTime currentDate = DateTime.UtcNow;
-            collectionTask.ItemsSource = task;
+            collectionTask.ItemsSource = listOfTask;
         }
 
         private void Clicked_AddTask(object sender, EventArgs e)
@@ -19,7 +21,7 @@ namespace ToDoList
             if (!string.IsNullOrEmpty(entryUserTask.Text))
             {
                 //labelDate.Text = "hi";
-                task.Add(entryUserTask.Text);
+                listOfTask.Add(entryUserTask.Text);
                 //labelDate.Text = entryUserTask.Text;
                 entryUserTask.Text = string.Empty;
             }
@@ -29,6 +31,22 @@ namespace ToDoList
         {
 
             
+        }
+
+
+        private void SwipeItem_Invoked(object sender, EventArgs e)
+        {
+            if (sender  is SwipeItem)
+            {
+                var taskText = collectionTask.SelectedItem.ToString();
+
+                if (taskText != null)
+                {
+                    listOfTask.Remove(taskText);
+                }
+                
+
+            }
         }
     }
 }

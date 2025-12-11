@@ -14,7 +14,7 @@
             Grid.Column="0"
             Grid.ColumnSpan="3"
             Grid.RowSpan="0"
-            Source="dotnet_bot.png"
+            Source="silly_dog.png"
             BackgroundColor="AliceBlue"/>
 
 
@@ -27,29 +27,38 @@
             Text="Add Task"
               Grid.Row="1"
               Grid.Column="1"
-                Clicked="Clicked_AddTask"
+              Clicked="Clicked_AddTask"
               />
-        <Button x:Name="buttonRemove"
-                Text="Remove Task"
-                Grid.Row="1"
-                Grid.Column="2"
-                Clicked="Clicked_RemoveTask"
-                />
 
         <!-- Creats a collections -->
         <CollectionView x:Name="collectionTask"
-            Grid.Row="2" Grid.Column="0"
-                        Grid.ColumnSpan="3">
+            Grid.Row="2" 
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            SelectionChanged="collectionTask_SelectionChanged">
 
             <CollectionView.ItemTemplate>
                 <!-- Makes pretty -->
                 <DataTemplate>
-                    <Grid Padding="0,5">
-                        <Border Padding="15" 
-                                StrokeShape="RoundRectangle 10">
-                            <Label Text="{Binding}"></Label>
-                        </Border>
-                    </Grid>
+                    <SwipeView>
+                        <!-- Swiping Right -->
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem Text="Delete"
+                                           BackgroundColor="Red"
+                                           IconImageSource="domo.png"
+                                           Invoked="SwipeItem_Invoked"
+                                           />
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+
+                        <Grid Padding="0,5">
+                            <Border Padding="15"
+                                    StrokeShape="RoundRectangle 10">
+                                <Label Text="{Binding}"></Label>
+                            </Border>
+                        </Grid>
+                    </SwipeView>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
