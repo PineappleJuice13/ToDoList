@@ -33,6 +33,21 @@ namespace ToDoList
             
         }
 
+        private void collectionTask_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (collectionTask.SelectedItem != null)
+            {
+                //string selectedTask = collectionTask.SelectedItem.ToString();
+                ////selectedTaskIndex = listOfTask.IndexOf(selectedTask);
+                //listOfTask.RemoveAt(selectedTaskIndex);
+                //buttonAdd.Text = "YIPPEEEE";
+            }
+            else
+            {
+            }
+
+
+        }
 
         private void SwipeItem_Invoked(object sender, EventArgs e)
         {
